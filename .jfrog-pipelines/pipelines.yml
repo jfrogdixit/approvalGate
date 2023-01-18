@@ -1,3 +1,6 @@
+template: true   # required for local templates
+valuesFilePath: ./values.yml
+
 pipelines:
   - name: approval_pipe
     steps:
@@ -7,8 +10,9 @@ pipelines:
           requiresApproval:
             timeoutSeconds: 86400
             approvers:
-              - owner
               - admin
+            notifications:
+              - integrationName: {{ .Values.myRepo.slackIntegration }}
         execution:
           onStart:
             - echo "OnStart"
