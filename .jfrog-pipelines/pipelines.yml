@@ -3,7 +3,8 @@ pipelines:
     steps:
       - name: sample_test
         type: Bash
-        requiresApproval:
+        configuration:
+          requiresApproval:
             timeoutSeconds: 86400
             approvers:
               - owner
