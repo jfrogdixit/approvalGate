@@ -1,0 +1,17 @@
+pipelines:
+  - name: approval_pipe
+    steps:
+      - name: sample_test
+        type: Bash
+        requiresApproval:
+            timeoutSeconds: 86400
+            approvers:
+              - owner
+              - admin
+        execution:
+          onStart:
+            - echo "OnStart"
+          onExecute:
+            - echo "OnExecute"
+          onSuccess:
+            - echo "OnSuccess"
