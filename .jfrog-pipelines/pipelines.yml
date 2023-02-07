@@ -4,15 +4,15 @@ valuesFilePath: ./values.yml
 pipelines:
   - name: approval_pipe
     steps:
-      - name: sample_test
+      - name: sampleStep
         type: Bash
         configuration:
           requiresApproval:
             timeoutSeconds: 86400
             approvers:
               - admin
-            notifications:
-              - integrationName: {{ .Values.myRepo.slackIntegration }}
+            # notifications:
+            #   - integrationName: {{ .Values.myRepo.slackIntegration }}
         execution:
           onStart:
             - echo "OnStart"
