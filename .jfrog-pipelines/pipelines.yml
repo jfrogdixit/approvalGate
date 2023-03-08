@@ -1,10 +1,9 @@
-template: true   # required for local templates
 valuesFilePath: ./values.yml
 
 pipelines:
   - name: approval_pipe
     steps:
-      - name: sampleStep
+      - name: StepA
         type: Bash
         configuration:
           requiresApproval:
@@ -15,8 +14,16 @@ pipelines:
             #   - integrationName: {{ .Values.myRepo.slackIntegration }}
         execution:
           onStart:
-            - echo "OnStart"
+            - echo "OnStart A"
           onExecute:
-            - echo "OnExecute"
+            - echo "OnExecute A"
           onSuccess:
-            - echo "OnSuccess"
+            - echo "OnSuccess A"
+
+      - name: StepB
+        type: Bash
+        execution:
+          onExecute:
+            - echo "OnExecute B"
+          onSuccess:
+            - echo "OnSuccess B"
