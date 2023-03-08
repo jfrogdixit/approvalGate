@@ -22,6 +22,9 @@ pipelines:
 
       - name: StepB
         type: Bash
+        configuration:
+          inputSteps:
+            - name: StepA
         execution:
           onExecute:
             - echo "OnExecute B"
